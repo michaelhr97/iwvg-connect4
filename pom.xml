@@ -4,6 +4,6 @@
   <groupId>connect4.iwvg</groupId>
   <artifactId>iwvg-connect4</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>Archetype - iwvg-connect4</name>
+  <name>Archetype - iwvg-domainModel.connect4</name>
   <url>http://maven.apache.org</url>
 </project>

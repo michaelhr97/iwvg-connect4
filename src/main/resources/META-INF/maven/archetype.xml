@@ -1,5 +1,5 @@
 <archetype>
-  <id>iwvg-connect4</id>
+  <id>iwvg-domainModel.connect4</id>
   <sources>
     <source>src/main/java/App.java</source>
   </sources>
