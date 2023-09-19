@@ -11,10 +11,14 @@ class Connect4 {
     }
 
     private void play(){
-        //play
+        this.playGame();
     }
 
     private void playGame(){
+        Console.getInstance().write("Start game");
+    }
 
+    public static void main(String[] args) {
+        new Connect4().play();
     }
 }
