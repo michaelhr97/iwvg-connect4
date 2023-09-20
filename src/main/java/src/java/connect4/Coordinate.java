@@ -10,8 +10,8 @@ class Coordinate {
 
     protected int column;
 
-    public static final int DIMENSIONX = 6;
-    public static final int DIMENSIONY = 7;
+    public static final int DIMENSION_X = 6;
+    public static final int DIMENSION_Y = 7;
 
 
     protected Coordinate(){
@@ -42,8 +42,8 @@ class Coordinate {
     }
 
     public boolean isValid(){
-        return (this.getLimits(Coordinate.DIMENSIONY).isIncluded(this.row)
-                && this.getLimits(Coordinate.DIMENSIONX).isIncluded(this.column));
+        return (this.getLimits(Coordinate.DIMENSION_Y).isIncluded(this.row)
+                && this.getLimits(Coordinate.DIMENSION_X).isIncluded(this.column));
     }
 
     protected ClosedInterval getLimits(int dimension){

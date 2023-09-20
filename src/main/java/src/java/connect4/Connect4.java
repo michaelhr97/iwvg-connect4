@@ -17,7 +17,7 @@ class Connect4 {
         do{
             this.turn.play();
             this.board.write();
-        }while(/*!this.isGame()*/ i==0);
+        }while(!this.isGame());
         this.turn.writeWinner();
     }
 

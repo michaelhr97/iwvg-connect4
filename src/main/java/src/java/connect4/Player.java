@@ -26,6 +26,7 @@ class Player {
         Coordinate coordinate;
         Error error;
         do{
+            Message.PLAYER_TURN.writeln(this.color.name());
             coordinate = this.getCoordinate(Message.ENTER_COORDINATE_TO_PUT);
             error = this.getPutTokenError(coordinate);
         }while (!error.isNull() || error.isWrong());
@@ -49,7 +50,7 @@ class Player {
     }
 
     private int getRow(int column){
-        for(int i=Coordinate.DIMENSIONX -1; i >= 0; i--){
+        for(int i=Coordinate.DIMENSION_X -1; i >= 0; i--){
             Coordinate coordinate = new Coordinate(i,column);
             if(coordinate.isValid() && board.isEmpty(coordinate)){
                 return i;
