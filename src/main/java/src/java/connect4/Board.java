@@ -85,8 +85,13 @@ class Board {
 
 
     boolean isConnect4Diagonal(Color color, Coordinate coordinate){
-
-        return false;
+        if(coordinate.getRow()+3 > 5) return false;
+        for(int i = coordinate.getRow(); i < coordinate.getRow() +4; i++){
+            if(colors[i][coordinate.getColumn()+i-coordinate.getRow()] != color){
+                return false;
+            }
+        }
+        return true;
     }
 
     boolean isConnect4ReverseDiagonal(Color color, Coordinate coordinate){
