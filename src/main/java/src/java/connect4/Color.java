@@ -17,7 +17,7 @@ enum Color {
             string = "   ";
         }
 
-        System.out.print(string);
+        Console.getInstance().write(string);
     }
 
     boolean isNull(){

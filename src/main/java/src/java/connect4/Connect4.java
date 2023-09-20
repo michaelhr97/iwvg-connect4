@@ -25,7 +25,6 @@ class Connect4 {
         return this.board.isGame(this.turn.getActiveColor());
     }
 
-
     public static void main(String[] args) {
         new Connect4().play();
     }

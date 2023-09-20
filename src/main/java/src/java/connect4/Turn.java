@@ -3,7 +3,7 @@ package src.java.connect4;
 class Turn {
 
     private Board board;
-    static final int NUMBER_PLAYERS = 2;
+    private static final int NUMBER_PLAYERS = 2;
     private Player[] players;
     private int activePlayer;
 
@@ -33,5 +33,6 @@ class Turn {
 
     void writeWinner(){
         this.players[this.activePlayer].writeWinner();
-    }
+}
+
 }
