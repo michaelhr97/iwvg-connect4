@@ -42,8 +42,8 @@ class Coordinate {
     }
 
     public boolean isValid(){
-        return (this.getLimits(Coordinate.DIMENSION_Y).isIncluded(this.row)
-                && this.getLimits(Coordinate.DIMENSION_X).isIncluded(this.column));
+        return (this.getLimits(Coordinate.DIMENSION_X).isIncluded(this.row)
+                && this.getLimits(Coordinate.DIMENSION_Y).isIncluded(this.column));
     }
 
     protected ClosedInterval getLimits(int dimension){
