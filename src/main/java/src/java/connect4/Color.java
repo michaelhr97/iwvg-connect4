@@ -21,6 +21,7 @@ enum Color {
     }
 
     boolean isNull(){
+
         return this == Color.NULL;
     }
 }
