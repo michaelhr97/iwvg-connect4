@@ -37,9 +37,6 @@ class Player {
     Coordinate getCoordinate(Message message){
         assert message != null;
 
-        //Coordinate coordinate = new Coordinate();
-        //coordinate.read(message);
-
         return this.read(message);
     }
 
@@ -54,7 +51,7 @@ class Player {
     private int getRow(int column){
         for(int i=Coordinate.DIMENSIONX -1; i >= 0; i--){
             Coordinate coordinate = new Coordinate(i,column);
-            if(board.isEmpty(coordinate)){
+            if(coordinate.isValid() && board.isEmpty(coordinate)){
                 return i;
             }
         }
