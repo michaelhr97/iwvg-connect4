@@ -10,9 +10,9 @@ class Board {
     }
 
     void reset() {
-        for (int i = 0; i < Coordinate.DIMENSIONX; i++) {
-            for (int j = 0; j < Coordinate.DIMENSIONY; j++) {
-                this.colors[i][j] = Color.NULL;
+        for (int i = 0; i < Coordinate.DIMENSIONY; i++) {
+            for (int j = 0; j < Coordinate.DIMENSIONX; j++) {
+                this.colors[j][i] = Color.NULL;
             }
         }
     }
@@ -35,5 +35,23 @@ class Board {
     boolean isEmpty(Coordinate coordinate) {
 
         return this.isOccupied(coordinate, Color.NULL);
+    }
+
+    boolean isGame(Color color){
+        assert !color.isNull();
+
+        return false;
+    }
+
+    void write(){
+        Message.HORIZONTAL_LINE.writeln();
+        for(int i=0; i< Coordinate.DIMENSIONY; i++){
+            for(int j=0; j< Coordinate.DIMENSIONX; j++){
+                this.getColor(new Coordinate(j, i)).write();
+                Message.VERTICAL_LINE.write();
+            }
+            Console.getInstance().writeln();
+        }
+        Message.HORIZONTAL_LINE.writeln();
     }
 }

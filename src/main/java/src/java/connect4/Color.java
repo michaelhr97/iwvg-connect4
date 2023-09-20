@@ -2,7 +2,7 @@ package src.java.connect4;
 
 enum Color {
     RED,
-    GREEN,
+    GRN,
     NULL;
 
     static Color get(int ordinal){
@@ -14,7 +14,7 @@ enum Color {
     void write(){
         String string = this.name();
         if(this.isNull()){
-            string = " ";
+            string = "   ";
         }
 
         System.out.print(string);

@@ -25,4 +25,8 @@ enum Error {
     public boolean isNull(){
         return this == Error.NULL;
     }
+
+    public boolean isWrong(){
+        return this == Error.WRONG_COORDINATES;
+    }
 }

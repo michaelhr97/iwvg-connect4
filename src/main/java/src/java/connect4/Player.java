@@ -17,7 +17,7 @@ class Player {
     }
 
     void play(){
-        if(this.putTokens > Player.TOKENSPERPLAYER){
+        if(this.putTokens < Player.TOKENSPERPLAYER){
             this.putToken();
         }
     }
@@ -28,13 +28,15 @@ class Player {
         do{
             coordinate = this.getCoordinate(Message.ENTER_COORDINATE_TO_PUT);
             error = this.getPutTokenError(coordinate);
-        }while (!error.isNull());
+        }while (!error.isNull() || error.isWrong());
         this.board.putToken(coordinate, this.color);
         this.putTokens++;
 
     }
 
     Coordinate getCoordinate(Message message){
+        assert message != null;
+
         Coordinate coordinate = new Coordinate();
         coordinate.read(message);
         return coordinate;
@@ -42,10 +44,23 @@ class Player {
 
     private Error getPutTokenError(Coordinate coordinate){
         Error error = Error.NULL;
-        if(!this.board.isEmpty(coordinate)){
-            error = Error.NOT_EMPTY;
+        if(!coordinate.isValid()){
+            error = Error.WRONG_COORDINATES;
+        }
+        else{
+            if(!this.board.isEmpty(coordinate)){
+                error = Error.NOT_EMPTY;
+            }
         }
         error.writeln();
         return error;
+    }
+
+    Color getColor(){
+        return this.color;
+    }
+
+    void writeWinner(){
+        Message.PLAYER_WIN.writeln(this.color.name());
     }
 }
