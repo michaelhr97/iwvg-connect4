@@ -10,8 +10,8 @@ class Coordinate {
 
     protected int column;
 
-    public static final int DIMENSIONX = 7;
-    public static final int DIMENSIONY = 6;
+    public static final int DIMENSIONX = 6;
+    public static final int DIMENSIONY = 7;
 
 
     protected Coordinate(){
@@ -28,6 +28,7 @@ class Coordinate {
         titleMessage.writeln();
         this.row = console.readInt(Coordinate.ROW) - 1;
         this.column = console.readInt(Coordinate.COLUMN) - 1;
+
     }
 
     public int getRow(){

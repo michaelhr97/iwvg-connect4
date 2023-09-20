@@ -37,9 +37,28 @@ class Player {
     Coordinate getCoordinate(Message message){
         assert message != null;
 
-        Coordinate coordinate = new Coordinate();
-        coordinate.read(message);
-        return coordinate;
+        //Coordinate coordinate = new Coordinate();
+        //coordinate.read(message);
+
+        return this.read(message);
+    }
+
+    private Coordinate read(Message message){
+        Console console = Console.getInstance();
+        message.writeln();
+        int column = console.readInt(Coordinate.COLUMN) - 1;
+        int row = this.getRow(column);
+        return new Coordinate(row,column);
+    }
+
+    private int getRow(int column){
+        for(int i=Coordinate.DIMENSIONX -1; i >= 0; i--){
+            Coordinate coordinate = new Coordinate(i,column);
+            if(board.isEmpty(coordinate)){
+                return i;
+            }
+        }
+        return 8;
     }
 
     private Error getPutTokenError(Coordinate coordinate){

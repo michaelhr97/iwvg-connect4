@@ -10,9 +10,9 @@ class Board {
     }
 
     void reset() {
-        for (int i = 0; i < Coordinate.DIMENSIONY; i++) {
-            for (int j = 0; j < Coordinate.DIMENSIONX; j++) {
-                this.colors[j][i] = Color.NULL;
+        for (int i = 0; i < Coordinate.DIMENSIONX; i++) {
+            for (int j = 0; j < Coordinate.DIMENSIONY; j++) {
+                this.colors[i][j] = Color.NULL;
             }
         }
     }
@@ -45,9 +45,9 @@ class Board {
 
     void write(){
         Message.HORIZONTAL_LINE.writeln();
-        for(int i=0; i< Coordinate.DIMENSIONY; i++){
-            for(int j=0; j< Coordinate.DIMENSIONX; j++){
-                this.getColor(new Coordinate(j, i)).write();
+        for(int i=0; i< Coordinate.DIMENSIONX; i++){
+            for(int j=0; j< Coordinate.DIMENSIONY; j++){
+                this.getColor(new Coordinate(i, j)).write();
                 Message.VERTICAL_LINE.write();
             }
             Console.getInstance().writeln();
