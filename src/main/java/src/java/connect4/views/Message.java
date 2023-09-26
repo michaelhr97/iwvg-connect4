@@ -1,6 +1,8 @@
-package src.java.connect4;
+package src.java.connect4.views;
 
-enum Message {
+import src.java.connect4.views.Console;
+
+public enum Message {
 
     TITLE("---CONNECT 4---"),
     HORIZONTAL_LINE("---------------"),
@@ -15,11 +17,11 @@ enum Message {
         this.message = message;
     }
 
-    void write(){
+    public void write(){
         Console.getInstance().write(this.message);
     }
 
-    void writeln(){
+    public void writeln(){
         Console.getInstance().writeln(this.message);
     }
 

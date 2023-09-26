@@ -1,6 +1,10 @@
-package src.java.connect4;
+package src.java.connect4.types;
 
-class Coordinate {
+import src.java.connect4.ClosedInterval;
+import src.java.connect4.views.Console;
+import src.java.connect4.views.Message;
+
+public class Coordinate {
 
     static final String ROW = "Row: ";
 
@@ -18,7 +22,7 @@ class Coordinate {
 
     }
 
-    protected Coordinate(int row, int column){
+    public Coordinate(int row, int column){
         this.row = row;
         this.column = column;
     }

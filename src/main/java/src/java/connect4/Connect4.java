@@ -1,28 +1,23 @@
 package src.java.connect4;
 
+import src.java.connect4.models.Game;
+import src.java.connect4.views.View;
+
 class Connect4 {
 
-    private Board board;
-    private Turn turn;
+    private Game game;
+    private View view;
 
-    Connect4(){
-        this.board = new Board();
-        this.turn = new Turn(this.board);
+    Connect4() {
+        this.game = new Game();
+        this.view = new View(this.game);
     }
 
-    private void play(){
-        Message.TITLE.writeln();
-        this.board.write();
-        int i = 0;
-        do{
-            this.turn.play();
-            this.board.write();
-        }while(!this.isGame());
-        this.turn.writeWinner();
-    }
-
-    private boolean isGame(){
-        return this.board.isGame(this.turn.getActiveColor());
+    private void play() {
+        do {
+            this.view.start();
+            this.view.play();
+        } while (this.view.resume());
     }
 
     public static void main(String[] args) {

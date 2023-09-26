@@ -1,4 +1,10 @@
-package src.java.connect4;
+package src.java.connect4.models;
+
+import src.java.connect4.Board;
+import src.java.connect4.types.Color;
+import src.java.connect4.types.Coordinate;
+import src.java.connect4.views.Console;
+import src.java.connect4.views.Message;
 
 class Player {
 
@@ -24,7 +30,7 @@ class Player {
 
     private void putToken(){
         Coordinate coordinate;
-        Error error;
+        src.java.connect4.types.Error error;
         do{
             Message.PLAYER_TURN.writeln(this.color.name());
             coordinate = this.getCoordinate(Message.ENTER_COORDINATE_TO_PUT);
@@ -59,14 +65,14 @@ class Player {
         return 8;
     }
 
-    private Error getPutTokenError(Coordinate coordinate){
-        Error error = Error.NULL;
+    private src.java.connect4.types.Error getPutTokenError(Coordinate coordinate){
+        src.java.connect4.types.Error error = src.java.connect4.types.Error.NULL;
         if(!coordinate.isValid()){
-            error = Error.WRONG_COORDINATES;
+            error = src.java.connect4.types.Error.WRONG_COORDINATES;
         }
         else{
             if(!this.board.isEmpty(coordinate)){
-                error = Error.NOT_EMPTY;
+                error = src.java.connect4.types.Error.NOT_EMPTY;
             }
         }
         error.writeln();

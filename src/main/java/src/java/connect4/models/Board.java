@@ -1,4 +1,7 @@
-package src.java.connect4;
+package src.java.connect4.models;
+
+import src.java.connect4.types.Color;
+import src.java.connect4.types.Coordinate;
 
 class Board {
 
@@ -18,22 +21,18 @@ class Board {
     }
 
     void putToken(Coordinate coordinate, Color color) {
-
         this.colors[coordinate.getRow()][coordinate.getColumn()] = color;
     }
 
-    private Color getColor(Coordinate coordinate) {
-
+    public Color getColor(Coordinate coordinate) {
         return this.colors[coordinate.getRow()][coordinate.getColumn()];
     }
 
     boolean isOccupied(Coordinate coordinate, Color color) {
-
         return this.getColor(coordinate) == color;
     }
 
     boolean isEmpty(Coordinate coordinate) {
-
         return this.isOccupied(coordinate, Color.NULL);
     }
 
@@ -51,7 +50,6 @@ class Board {
             }
         }
         return false;
-
     }
 
     boolean isConnect4(Color color, Coordinate coordinate){
@@ -59,7 +57,6 @@ class Board {
                 || isConnect4Horizontal(color, coordinate)
                 || isConnect4Diagonal(color, coordinate)
                 || isConnect4ReverseDiagonal(color, coordinate);
-
     }
 
     boolean isConnect4Vertical(Color color, Coordinate coordinate){
@@ -73,8 +70,9 @@ class Board {
     }
 
     boolean isConnect4Horizontal(Color color, Coordinate coordinate){
-
-        if(coordinate.getColumn()-3 <0) return false;
+        if(coordinate.getColumn()-3 <0) {
+            return false;
+        }
         for(int i = coordinate.getColumn(); i > coordinate.getColumn() -4; i--){
             if(colors[coordinate.getRow()][i] != color){
                 return false;
@@ -95,24 +93,14 @@ class Board {
     }
 
     boolean isConnect4ReverseDiagonal(Color color, Coordinate coordinate){
-        if((coordinate.getColumn()-3 <0) || (coordinate.getRow()+3 > 5)) return false;
+        if((coordinate.getColumn()-3 <0) || (coordinate.getRow()+3 > 5)) {
+            return false;
+        }
         for(int i = coordinate.getColumn(); i > coordinate.getColumn() -4; i--){
             if(colors[coordinate.getRow()-i+coordinate.getColumn()][i] != color){
                 return false;
             }
         }
         return true;
-    }
-
-    void write(){
-        Message.HORIZONTAL_LINE.writeln();
-        for(int i=0; i< Coordinate.DIMENSION_X; i++){
-            for(int j=0; j< Coordinate.DIMENSION_Y; j++){
-                this.getColor(new Coordinate(i, j)).write();
-                Message.VERTICAL_LINE.write();
-            }
-            Console.getInstance().writeln();
-        }
-        Message.HORIZONTAL_LINE.writeln();
     }
 }

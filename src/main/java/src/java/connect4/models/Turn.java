@@ -1,4 +1,8 @@
-package src.java.connect4;
+package src.java.connect4.models;
+
+import src.java.connect4.Board;
+import src.java.connect4.Player;
+import src.java.connect4.types.Color;
 
 class Turn {
 
