@@ -6,7 +6,7 @@ public class ColorView {
     void write(Color color) {
         String string = color.name();
         if (color.isNull()) {
-            string = " ";
+            string = Message.EMPTY_COLOR.getMessage();
         }
         Console.getInstance().write(string);
     }

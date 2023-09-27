@@ -3,6 +3,8 @@ package src.java.connect4.views;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+import src.java.connect4.types.Error;
+
 public class Console {
 
     private static Console instance = new Console();
@@ -13,23 +15,22 @@ public class Console {
 
     private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
-    public String readString(String tittleMessage) {
+    public String readString() {
         String input = null;
-        this.write(tittleMessage);
         try {
             input = this.bufferedReader.readLine();
         } catch (Exception e) {
-
+            Error.WRONG_COORDINATES.writeln();
         }
         return input;
     }
 
-    public int readInt(String tittleMessage) {
+    public int readInt() {
         int input = 0;
         boolean ok = false;
         do {
             try {
-                input = Integer.parseInt(this.readString(tittleMessage));
+                input = Integer.parseInt(this.readString());
                 ok = true;
             } catch (Exception ex) {
                 this.writeError("integer");

@@ -1,14 +1,8 @@
 package src.java.connect4.types;
 
 import src.java.connect4.ClosedInterval;
-import src.java.connect4.views.Console;
-import src.java.connect4.views.Message;
 
 public class Coordinate {
-
-    static final String ROW = "Row: ";
-
-    static final String COLUMN = "Column: ";
 
     protected int row;
 
@@ -18,21 +12,9 @@ public class Coordinate {
     public static final int DIMENSION_Y = 7;
 
 
-    protected Coordinate(){
-
-    }
-
     public Coordinate(int row, int column){
         this.row = row;
         this.column = column;
-    }
-
-    protected void read(Message titleMessage){
-        Console console = Console.getInstance();
-        titleMessage.writeln();
-        this.row = console.readInt(Coordinate.ROW) - 1;
-        this.column = console.readInt(Coordinate.COLUMN) - 1;
-
     }
 
     public int getRow(){

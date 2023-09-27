@@ -10,7 +10,7 @@ public class ErrorView {
             "The coordinates are wrong"
     };
 
-    void writeln(Error error) {
+    public void writeln(Error error) {
         if (!error.isNull()) {
             Console.getInstance().writeln(ErrorView.MESSAGES[error.ordinal()]);
         }

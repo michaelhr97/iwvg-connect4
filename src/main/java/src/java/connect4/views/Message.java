@@ -1,17 +1,17 @@
 package src.java.connect4.views;
 
-import src.java.connect4.views.Console;
-
 public enum Message {
 
     TITLE("---CONNECT 4---"),
-    HORIZONTAL_LINE("---------------"),
+    HORIZONTAL_LINE("--------------------------------------------"),
     VERTICAL_LINE(" | "),
+    EMPTY_COLOR("   "),
     PLAYER_WIN("The player :player wins!!"),
     PLAYER_TURN("Player :player Turn:"),
-    ENTER_COORDINATE_TO_PUT("Enter a coordinate to put a token:");
+    ENTER_COORDINATE_TO_PUT("Enter a coordinate to put a token:"),
+    COLUMN("Column: ");
 
-    private String message;
+    private final String message;
 
     Message(String message){
         this.message = message;
@@ -25,9 +25,13 @@ public enum Message {
         Console.getInstance().writeln(this.message);
     }
 
-    void writeln(String player){
+    public void writeln(String player){
 
-        Console.getInstance().writeln(this.message.replaceAll(":player", "" + player));
+        Console.getInstance().writeln(this.message.replaceAll(":player", player));
+    }
+
+    public String getMessage(){
+        return this.message;
     }
 
 

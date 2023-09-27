@@ -1,23 +1,23 @@
 package src.java.connect4;
 
 import src.java.connect4.models.Game;
-import src.java.connect4.views.View;
+import src.java.connect4.views.GameView;
 
 class Connect4 {
 
     private Game game;
-    private View view;
+    private GameView gameView;
 
     Connect4() {
         this.game = new Game();
-        this.view = new View(this.game);
+        this.gameView = new GameView(this.game);
     }
 
     private void play() {
         do {
-            this.view.start();
-            this.view.play();
-        } while (this.view.resume());
+            this.gameView.start();
+            this.gameView.play();
+        } while (this.gameView.resume());
     }
 
     public static void main(String[] args) {

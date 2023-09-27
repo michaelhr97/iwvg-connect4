@@ -1,11 +1,8 @@
 package src.java.connect4.models;
 
-import src.java.connect4.Board;
-import src.java.connect4.Player;
 import src.java.connect4.types.Color;
 
 class Turn {
-
     private Board board;
     private static final int NUMBER_PLAYERS = 2;
     private Player[] players;
@@ -34,9 +31,5 @@ class Turn {
     Color getActiveColor(){
         return this.players[this.activePlayer].getColor();
     }
-
-    void writeWinner(){
-        this.players[this.activePlayer].writeWinner();
-}
 
 }

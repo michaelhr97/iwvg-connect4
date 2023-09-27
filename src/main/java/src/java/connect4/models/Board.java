@@ -28,12 +28,8 @@ class Board {
         return this.colors[coordinate.getRow()][coordinate.getColumn()];
     }
 
-    boolean isOccupied(Coordinate coordinate, Color color) {
-        return this.getColor(coordinate) == color;
-    }
-
     boolean isEmpty(Coordinate coordinate) {
-        return this.isOccupied(coordinate, Color.NULL);
+        return this.getColor(coordinate) == Color.NULL;
     }
 
     boolean isGame(Color color){

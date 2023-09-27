@@ -1,7 +1,6 @@
 package src.java.connect4.views;
 
 import src.java.connect4.models.Game;
-
 class PlayView extends WithGameView {
 
     PlayView(Game game) {
@@ -10,11 +9,12 @@ class PlayView extends WithGameView {
 
     void interact() {
         do {
-            new Pla(this.game).interact();
+            Message.PLAYER_TURN.writeln(this.game.getActiveColor().name());
             this.game.next();
             new BoardView().write(this.game);
-        } while (!this.game.isTicTacToe());
+        } while (!this.game.isGame(this.game.getActiveColor()));
         Message.PLAYER_WIN.writeln(this.game.getActiveColor().name());
     }
+
 
 }

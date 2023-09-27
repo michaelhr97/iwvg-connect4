@@ -1,8 +1,8 @@
 package src.java.connect4.models;
 
-import src.java.connect4.Board;
 import src.java.connect4.types.Color;
 import src.java.connect4.types.Coordinate;
+import src.java.connect4.types.Error;
 import src.java.connect4.views.Console;
 import src.java.connect4.views.Message;
 
@@ -32,8 +32,8 @@ class Player {
         Coordinate coordinate;
         src.java.connect4.types.Error error;
         do{
-            Message.PLAYER_TURN.writeln(this.color.name());
-            coordinate = this.getCoordinate(Message.ENTER_COORDINATE_TO_PUT);
+            Message.ENTER_COORDINATE_TO_PUT.writeln();
+            coordinate = this.getCoordinate();
             error = this.getPutTokenError(coordinate);
         }while (!error.isNull() || error.isWrong());
         this.board.putToken(coordinate, this.color);
@@ -41,16 +41,14 @@ class Player {
 
     }
 
-    Coordinate getCoordinate(Message message){
-        assert message != null;
-
-        return this.read(message);
+    Coordinate getCoordinate(){
+        return this.read();
     }
 
-    private Coordinate read(Message message){
+    private Coordinate read(){
         Console console = Console.getInstance();
-        message.writeln();
-        int column = console.readInt(Coordinate.COLUMN) - 1;
+        Message.COLUMN.write();
+        int column = console.readInt() - 1;
         int row = this.getRow(column);
         return new Coordinate(row,column);
     }
@@ -65,14 +63,14 @@ class Player {
         return 8;
     }
 
-    private src.java.connect4.types.Error getPutTokenError(Coordinate coordinate){
-        src.java.connect4.types.Error error = src.java.connect4.types.Error.NULL;
+    private Error getPutTokenError(Coordinate coordinate){
+        Error error = Error.NULL;
         if(!coordinate.isValid()){
-            error = src.java.connect4.types.Error.WRONG_COORDINATES;
+            error = Error.WRONG_COORDINATES;
         }
         else{
             if(!this.board.isEmpty(coordinate)){
-                error = src.java.connect4.types.Error.NOT_EMPTY;
+                error = Error.NOT_EMPTY;
             }
         }
         error.writeln();
