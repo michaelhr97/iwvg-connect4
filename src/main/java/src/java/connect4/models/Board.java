@@ -1,7 +1,6 @@
 package src.java.connect4.models;
 
-import src.java.connect4.types.Color;
-import src.java.connect4.types.Coordinate;
+import src.java.connect4.types.*;
 
 class Board {
 
@@ -32,71 +31,38 @@ class Board {
         return this.getColor(coordinate) == Color.NULL;
     }
 
-    boolean isGame(Color color){
+    boolean isGame(Color color, Coordinate coordinate){
         assert !color.isNull();
 
-        for(int j=0; j < Coordinate.DIMENSION_Y; j++){
-            for(int i=0; i < Coordinate.DIMENSION_X; i++){
-                if(colors[i][j] == color){
-                    Coordinate coordinate = new Coordinate(i,j);
-                    if(isConnect4(color,coordinate)){
-                        return true;
-                    }
-                }
+        boolean a =  DirectionalSearch(color, coordinate, Direction.VERTICAL)
+                || DirectionalSearch(color, coordinate, Direction.HORIZONTAL)
+                || DirectionalSearch(color, coordinate, Direction.DIAGONAL)
+                || DirectionalSearch(color, coordinate, Direction.REVERSEDIAGONAL);
+
+        return a;
+    }
+
+    boolean isConnect4(Color color, Line line){
+        int sameColorCounter = 0;
+        for(Coordinate coordinateIterator: line.getCoordinates()){
+            if(coordinateIterator.isValid()
+                    && colors[coordinateIterator.getRow()][coordinateIterator.getColumn()] == color){
+                sameColorCounter++;
             }
+        }
+        return sameColorCounter == 4;
+    }
+
+    boolean DirectionalSearch(Color color, Coordinate coordinate, Direction direction){
+        Line line = new Line();
+        line.createLine(coordinate, direction);
+        for(int i = 0; i < 4; i++){
+            if(isConnect4(color, line)){
+                return true;
+            }
+            line.moveLine(direction);
         }
         return false;
     }
 
-    boolean isConnect4(Color color, Coordinate coordinate){
-        return isConnect4Vertical(color, coordinate)
-                || isConnect4Horizontal(color, coordinate)
-                || isConnect4Diagonal(color, coordinate)
-                || isConnect4ReverseDiagonal(color, coordinate);
-    }
-
-    boolean isConnect4Vertical(Color color, Coordinate coordinate){
-        if(coordinate.getRow()+3 > 5) return false;
-        for(int i = coordinate.getRow(); i < coordinate.getRow() +4; i++){
-            if(colors[i][coordinate.getColumn()] != color){
-                return false;
-            }
-        }
-        return true;
-    }
-
-    boolean isConnect4Horizontal(Color color, Coordinate coordinate){
-        if(coordinate.getColumn()-3 <0) {
-            return false;
-        }
-        for(int i = coordinate.getColumn(); i > coordinate.getColumn() -4; i--){
-            if(colors[coordinate.getRow()][i] != color){
-                return false;
-            }
-        }
-        return true;
-    }
-
-
-    boolean isConnect4Diagonal(Color color, Coordinate coordinate){
-        if(coordinate.getRow()+3 > 5) return false;
-        for(int i = coordinate.getRow(); i < coordinate.getRow() +4; i++){
-            if(colors[i][coordinate.getColumn()+i-coordinate.getRow()] != color){
-                return false;
-            }
-        }
-        return true;
-    }
-
-    boolean isConnect4ReverseDiagonal(Color color, Coordinate coordinate){
-        if((coordinate.getColumn()-3 <0) || (coordinate.getRow()+3 > 5)) {
-            return false;
-        }
-        for(int i = coordinate.getColumn(); i > coordinate.getColumn() -4; i--){
-            if(colors[coordinate.getRow()-i+coordinate.getColumn()][i] != color){
-                return false;
-            }
-        }
-        return true;
-    }
 }

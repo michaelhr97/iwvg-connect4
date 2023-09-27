@@ -22,15 +22,15 @@ class Player {
         this.putTokens = 0;
     }
 
-    void play(){
-        if(this.putTokens < Player.TOKENSPERPLAYER){
-            this.putToken();
-        }
+    public Coordinate play(){
+        assert (this.putTokens < Player.TOKENSPERPLAYER);
+
+        return this.putToken();
     }
 
-    private void putToken(){
+    private Coordinate putToken(){
         Coordinate coordinate;
-        src.java.connect4.types.Error error;
+        Error error;
         do{
             Message.ENTER_COORDINATE_TO_PUT.writeln();
             coordinate = this.getCoordinate();
@@ -38,6 +38,8 @@ class Player {
         }while (!error.isNull() || error.isWrong());
         this.board.putToken(coordinate, this.color);
         this.putTokens++;
+
+        return coordinate;
 
     }
 

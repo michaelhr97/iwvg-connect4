@@ -2,9 +2,9 @@ package src.java.connect4.types;
 
 public class Coordinate {
 
-    protected int row;
+    private int row;
 
-    protected int column;
+    private int column;
 
     public static final int DIMENSION_X = 6;
     public static final int DIMENSION_Y = 7;
@@ -25,12 +25,23 @@ public class Coordinate {
         return this.column;
     }
 
-    public boolean isValid(){
-        return (this.getLimits(Coordinate.DIMENSION_X).isIncluded(this.row)
-                && this.getLimits(Coordinate.DIMENSION_Y).isIncluded(this.column));
+    public void moveCoordinate(Coordinate coordinate){
+        this.row += coordinate.getRow();
+        this.column += coordinate.getColumn();
     }
 
-    protected ClosedInterval getLimits(int dimension){
+    public void moveCoordinateXTimes(Coordinate coordinate, int times){
+        for(int i = 0; i< times; i++){
+            moveCoordinate(coordinate);
+        }
+    }
+
+    public boolean isValid(){
+        return (this.getLimits(Coordinate.DIMENSION_X).isIncluded(this.getRow())
+                && this.getLimits(Coordinate.DIMENSION_Y).isIncluded(this.getColumn()));
+    }
+
+    private ClosedInterval getLimits(int dimension){
         return new ClosedInterval(0,dimension - 1);
     }
 

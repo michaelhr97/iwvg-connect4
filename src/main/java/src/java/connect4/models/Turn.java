@@ -1,6 +1,7 @@
 package src.java.connect4.models;
 
 import src.java.connect4.types.Color;
+import src.java.connect4.types.Coordinate;
 
 class Turn {
     private Board board;
@@ -22,9 +23,10 @@ class Turn {
     }
 
     void play(){
-        this.players[this.activePlayer].play();
-        if (!this.board.isGame(this.getActiveColor())){
+        Coordinate lastCoordinate = this.players[this.activePlayer].play();
+        if (!this.board.isGame(this.getActiveColor(), lastCoordinate)){
             this.activePlayer = (this.activePlayer+1) % Turn.NUMBER_PLAYERS;
+            int a = 1;
         }
     }
 
