@@ -23,10 +23,9 @@ class Turn {
     }
 
     void play(){
-        Coordinate lastCoordinate = this.players[this.activePlayer].play();
-        if (!this.board.isGame(this.getActiveColor(), lastCoordinate)){
+        this.players[this.activePlayer].play();
+        if (!this.board.isGame(this.getActiveColor(), this.players[this.activePlayer].getLastTokenCoordinate())){
             this.activePlayer = (this.activePlayer+1) % Turn.NUMBER_PLAYERS;
-            int a = 1;
         }
     }
 

@@ -34,12 +34,10 @@ class Board {
     boolean isGame(Color color, Coordinate coordinate){
         assert !color.isNull();
 
-        boolean a =  DirectionalSearch(color, coordinate, Direction.VERTICAL)
+        return DirectionalSearch(color, coordinate, Direction.VERTICAL)
                 || DirectionalSearch(color, coordinate, Direction.HORIZONTAL)
                 || DirectionalSearch(color, coordinate, Direction.DIAGONAL)
                 || DirectionalSearch(color, coordinate, Direction.REVERSEDIAGONAL);
-
-        return a;
     }
 
     boolean isConnect4(Color color, Line line){

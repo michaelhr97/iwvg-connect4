@@ -11,6 +11,7 @@ class Player {
     private Color color;
     private Board board;
     private int putTokens;
+    private Coordinate lastTokenCoordinate;
 
     public static final int TOKENSPERPLAYER = 21;
 
@@ -22,13 +23,13 @@ class Player {
         this.putTokens = 0;
     }
 
-    public Coordinate play(){
+    public void play(){
         assert (this.putTokens < Player.TOKENSPERPLAYER);
 
-        return this.putToken();
+        this.putToken();
     }
 
-    private Coordinate putToken(){
+    private void putToken(){
         Coordinate coordinate;
         Error error;
         do{
@@ -39,8 +40,7 @@ class Player {
         this.board.putToken(coordinate, this.color);
         this.putTokens++;
 
-        return coordinate;
-
+        this.lastTokenCoordinate = coordinate;
     }
 
     Coordinate getCoordinate(){
@@ -85,5 +85,9 @@ class Player {
 
     void writeWinner(){
         Message.PLAYER_WIN.writeln(this.color.name());
+    }
+
+    public Coordinate getLastTokenCoordinate() {
+        return this.lastTokenCoordinate;
     }
 }

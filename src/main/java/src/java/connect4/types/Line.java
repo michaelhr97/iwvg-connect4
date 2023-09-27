@@ -7,6 +7,7 @@ public class Line {
     private ArrayList<Coordinate> coordinates;
 
     public Line() {
+
         coordinates = new ArrayList<>();
     }
 
@@ -28,6 +29,7 @@ public class Line {
     }
 
     public ArrayList<Coordinate> getCoordinates(){
+
         return this.coordinates;
     }
 }
