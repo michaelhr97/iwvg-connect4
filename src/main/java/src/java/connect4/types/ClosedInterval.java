@@ -1,4 +1,4 @@
-package src.java.connect4;
+package src.java.connect4.types;
 
 public class ClosedInterval {
 

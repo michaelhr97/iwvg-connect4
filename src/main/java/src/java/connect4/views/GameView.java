@@ -5,12 +5,12 @@ import src.java.connect4.models.Game;
 public class GameView extends WithGameView {
 
     private StartView startView;
-    private PlayView playView;
+    private PlayerView playerView;
 
     public GameView(Game game) {
         super(game);
         this.startView = new StartView(this.game);
-        this.playView = new PlayView(this.game);
+        this.playerView = new PlayerView(this.game);
     }
 
     public void start() {
@@ -18,7 +18,7 @@ public class GameView extends WithGameView {
     }
 
     public void play() {
-        this.playView.interact();
+        this.playerView.interact();
     }
 
     public boolean resume(){

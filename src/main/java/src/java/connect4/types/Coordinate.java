@@ -1,7 +1,5 @@
 package src.java.connect4.types;
 
-import src.java.connect4.ClosedInterval;
-
 public class Coordinate {
 
     protected int row;
