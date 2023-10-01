@@ -1,6 +1,6 @@
 package src.java.connect4.types;
 
-public class Coordinate {
+public class Coordenate {
 
     private int row;
 
@@ -10,7 +10,7 @@ public class Coordinate {
     public static final int DIMENSION_Y = 7;
 
 
-    public Coordinate(int row, int column){
+    public Coordenate(int row, int column){
         this.row = row;
         this.column = column;
     }
@@ -25,20 +25,20 @@ public class Coordinate {
         return this.column;
     }
 
-    public void moveCoordinate(Coordinate coordinate){
-        this.row += coordinate.getRow();
-        this.column += coordinate.getColumn();
+    public void moveCoordinate(Coordenate coordenate){
+        this.row += coordenate.getRow();
+        this.column += coordenate.getColumn();
     }
 
-    public void moveCoordinateXTimes(Coordinate coordinate, int times){
+    public void moveCoordinateXTimes(Coordenate coordenate, int times){
         for(int i = 0; i< times; i++){
-            moveCoordinate(coordinate);
+            moveCoordinate(coordenate);
         }
     }
 
     public boolean isValid(){
-        return (this.getLimits(Coordinate.DIMENSION_X).isIncluded(this.getRow())
-                && this.getLimits(Coordinate.DIMENSION_Y).isIncluded(this.getColumn()));
+        return (this.getLimits(Coordenate.DIMENSION_X).isIncluded(this.getRow())
+                && this.getLimits(Coordenate.DIMENSION_Y).isIncluded(this.getColumn()));
     }
 
     private ClosedInterval getLimits(int dimension){

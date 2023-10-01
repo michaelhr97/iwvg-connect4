@@ -1,35 +1,34 @@
 package src.java.connect4.types;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Line {
-    private ArrayList<Coordinate> coordinates;
+    private ArrayList<Coordenate> coordenates;
 
     public Line() {
 
-        coordinates = new ArrayList<>();
+        coordenates = new ArrayList<>();
     }
 
-    public void createLine(Coordinate coordinate, Direction direction){
-        coordinates.clear();
-        coordinates.add(coordinate);
+    public void createLine(Coordenate coordenate, Direction direction){
+        coordenates.clear();
+        coordenates.add(coordenate);
         for(int i= 1; i < 4 ; i++){
-            Coordinate lineCoordinate =
-                    new Coordinate(coordinate.getRow(),coordinate.getColumn());
-            lineCoordinate.moveCoordinateXTimes(direction.getDirectionCoordinate(),i);
-            coordinates.add(lineCoordinate);
+            Coordenate lineCoordenate =
+                    new Coordenate(coordenate.getRow(), coordenate.getColumn());
+            lineCoordenate.moveCoordinateXTimes(direction.getDirectionCoordinate(),i);
+            coordenates.add(lineCoordenate);
         }
     }
 
     public void moveLine(Direction direction){
-        for (Coordinate coordinate : this.coordinates) {
-            coordinate.moveCoordinate(direction.getInverseDirectionCoordinate());
+        for (Coordenate coordenate : this.coordenates) {
+            coordenate.moveCoordinate(direction.getInverseDirectionCoordinate());
         }
     }
 
-    public ArrayList<Coordinate> getCoordinates(){
+    public ArrayList<Coordenate> getCoordinates(){
 
-        return this.coordinates;
+        return this.coordenates;
     }
 }

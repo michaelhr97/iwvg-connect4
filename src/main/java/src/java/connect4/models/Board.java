@@ -7,53 +7,53 @@ class Board {
     private Color[][] colors;
 
     Board() {
-        this.colors = new Color[Coordinate.DIMENSION_X][Coordinate.DIMENSION_Y];
+        this.colors = new Color[Coordenate.DIMENSION_X][Coordenate.DIMENSION_Y];
         this.reset();
     }
 
     void reset() {
-        for (int i = 0; i < Coordinate.DIMENSION_X; i++) {
-            for (int j = 0; j < Coordinate.DIMENSION_Y; j++) {
+        for (int i = 0; i < Coordenate.DIMENSION_X; i++) {
+            for (int j = 0; j < Coordenate.DIMENSION_Y; j++) {
                 this.colors[i][j] = Color.NULL;
             }
         }
     }
 
-    void putToken(Coordinate coordinate, Color color) {
-        this.colors[coordinate.getRow()][coordinate.getColumn()] = color;
+    void putToken(Coordenate coordenate, Color color) {
+        this.colors[coordenate.getRow()][coordenate.getColumn()] = color;
     }
 
-    public Color getColor(Coordinate coordinate) {
-        return this.colors[coordinate.getRow()][coordinate.getColumn()];
+    public Color getColor(Coordenate coordenate) {
+        return this.colors[coordenate.getRow()][coordenate.getColumn()];
     }
 
-    boolean isEmpty(Coordinate coordinate) {
-        return this.getColor(coordinate) == Color.NULL;
+    boolean isEmpty(Coordenate coordenate) {
+        return this.getColor(coordenate) == Color.NULL;
     }
 
-    boolean isGame(Color color, Coordinate coordinate){
+    boolean isGame(Color color, Coordenate coordenate){
         assert !color.isNull();
 
-        return DirectionalSearch(color, coordinate, Direction.VERTICAL)
-                || DirectionalSearch(color, coordinate, Direction.HORIZONTAL)
-                || DirectionalSearch(color, coordinate, Direction.DIAGONAL)
-                || DirectionalSearch(color, coordinate, Direction.REVERSEDIAGONAL);
+        return DirectionalSearch(color, coordenate, Direction.VERTICAL)
+                || DirectionalSearch(color, coordenate, Direction.HORIZONTAL)
+                || DirectionalSearch(color, coordenate, Direction.DIAGONAL)
+                || DirectionalSearch(color, coordenate, Direction.REVERSEDIAGONAL);
     }
 
     boolean isConnect4(Color color, Line line){
         int sameColorCounter = 0;
-        for(Coordinate coordinateIterator: line.getCoordinates()){
-            if(coordinateIterator.isValid()
-                    && colors[coordinateIterator.getRow()][coordinateIterator.getColumn()] == color){
+        for(Coordenate coordenateIterator : line.getCoordinates()){
+            if(coordenateIterator.isValid()
+                    && colors[coordenateIterator.getRow()][coordenateIterator.getColumn()] == color){
                 sameColorCounter++;
             }
         }
         return sameColorCounter == 4;
     }
 
-    boolean DirectionalSearch(Color color, Coordinate coordinate, Direction direction){
+    boolean DirectionalSearch(Color color, Coordenate coordenate, Direction direction){
         Line line = new Line();
-        line.createLine(coordinate, direction);
+        line.createLine(coordenate, direction);
         for(int i = 0; i < 4; i++){
             if(isConnect4(color, line)){
                 return true;

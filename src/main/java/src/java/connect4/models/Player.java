@@ -1,7 +1,7 @@
 package src.java.connect4.models;
 
 import src.java.connect4.types.Color;
-import src.java.connect4.types.Coordinate;
+import src.java.connect4.types.Coordenate;
 import src.java.connect4.types.Error;
 import src.java.connect4.views.Console;
 import src.java.connect4.views.Message;
@@ -11,7 +11,7 @@ class Player {
     private Color color;
     private Board board;
     private int putTokens;
-    private Coordinate lastTokenCoordinate;
+    private Coordenate lastTokenCoordenate;
 
     public static final int TOKENSPERPLAYER = 21;
 
@@ -30,48 +30,48 @@ class Player {
     }
 
     private void putToken(){
-        Coordinate coordinate;
+        Coordenate coordenate;
         Error error;
         do{
             Message.ENTER_COORDINATE_TO_PUT.writeln();
-            coordinate = this.getCoordinate();
-            error = this.getPutTokenError(coordinate);
+            coordenate = this.getCoordinate();
+            error = this.getPutTokenError(coordenate);
         }while (!error.isNull() || error.isWrong());
-        this.board.putToken(coordinate, this.color);
+        this.board.putToken(coordenate, this.color);
         this.putTokens++;
 
-        this.lastTokenCoordinate = coordinate;
+        this.lastTokenCoordenate = coordenate;
     }
 
-    Coordinate getCoordinate(){
+    Coordenate getCoordinate(){
         return this.read();
     }
 
-    private Coordinate read(){
+    private Coordenate read(){
         Console console = Console.getInstance();
         Message.COLUMN.write();
         int column = console.readInt() - 1;
         int row = this.getRow(column);
-        return new Coordinate(row,column);
+        return new Coordenate(row,column);
     }
 
     private int getRow(int column){
-        for(int i=Coordinate.DIMENSION_X -1; i >= 0; i--){
-            Coordinate coordinate = new Coordinate(i,column);
-            if(coordinate.isValid() && board.isEmpty(coordinate)){
+        for(int i = Coordenate.DIMENSION_X -1; i >= 0; i--){
+            Coordenate coordenate = new Coordenate(i,column);
+            if(coordenate.isValid() && board.isEmpty(coordenate)){
                 return i;
             }
         }
         return 8;
     }
 
-    private Error getPutTokenError(Coordinate coordinate){
+    private Error getPutTokenError(Coordenate coordenate){
         Error error = Error.NULL;
-        if(!coordinate.isValid()){
+        if(!coordenate.isValid()){
             error = Error.WRONG_COORDINATES;
         }
         else{
-            if(!this.board.isEmpty(coordinate)){
+            if(!this.board.isEmpty(coordenate)){
                 error = Error.NOT_EMPTY;
             }
         }
@@ -87,7 +87,7 @@ class Player {
         Message.PLAYER_WIN.writeln(this.color.name());
     }
 
-    public Coordinate getLastTokenCoordinate() {
-        return this.lastTokenCoordinate;
+    public Coordenate getLastTokenCoordinate() {
+        return this.lastTokenCoordenate;
     }
 }

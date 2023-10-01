@@ -1,7 +1,6 @@
 package src.java.connect4.models;
 
 import src.java.connect4.types.Color;
-import src.java.connect4.types.Coordinate;
 
 class Turn {
     private Board board;
