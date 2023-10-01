@@ -5,8 +5,8 @@ import src.java.connect4.views.GameView;
 
 class Connect4 {
 
-    private Game game;
-    private GameView gameView;
+    private final Game game;
+    private final GameView gameView;
 
     Connect4() {
         this.game = new Game();

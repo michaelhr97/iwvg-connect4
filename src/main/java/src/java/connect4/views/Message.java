@@ -10,7 +10,8 @@ public enum Message {
     PLAYER_TURN("Player :player Turn:"),
     ENTER_COORDINATE_TO_PUT("Enter a coordinate to put a token:"),
     COLUMN("Column: "),
-    NEW_GAME("Do you want to play again? 0: Yes | 1: No");
+    NEW_GAME("Do you want to play again? 0: Yes | 1: No"),
+    TIE("It's a tie!");
 
     private final String message;
 

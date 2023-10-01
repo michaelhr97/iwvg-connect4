@@ -3,17 +3,15 @@ package src.java.connect4.views;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-import src.java.connect4.types.Error;
-
 public class Console {
 
-    private static Console instance = new Console();
+    private static final Console instance = new Console();
 
     public static Console getInstance() {
         return instance;
     }
 
-    private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+    private final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
     public String readString() {
         String input = null;

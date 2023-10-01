@@ -79,6 +79,10 @@ class Player {
         return error;
     }
 
+    public boolean haveTokensToPlay(){
+        return this.putTokens == Player.TOKENSPERPLAYER;
+    }
+
     Color getColor(){
         return this.color;
     }

@@ -4,8 +4,8 @@ import src.java.connect4.models.Game;
 
 public class GameView extends WithGameView {
 
-    private StartView startView;
-    private PlayerView playerView;
+    private final StartView startView;
+    private final PlayerView playerView;
 
     public GameView(Game game) {
         super(game);

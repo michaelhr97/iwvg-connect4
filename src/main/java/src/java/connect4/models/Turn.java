@@ -28,8 +28,15 @@ class Turn {
 
     boolean isGame(){
         boolean game = this.board.isGame(this.getActiveColor(), this.players[this.activePlayer].getLastTokenCoordinate());
-        if(game) Message.PLAYER_WIN.writeln(this.getActiveColor().name());
-        else this.switchPlayer();
+        if(game)
+            Message.PLAYER_WIN.writeln(this.getActiveColor().name());
+        else{
+            this.switchPlayer();
+            if(this.players[this.activePlayer].haveTokensToPlay()){
+                Message.TIE.writeln();
+                game = true;
+            }
+        }
         return game;
     }
 
