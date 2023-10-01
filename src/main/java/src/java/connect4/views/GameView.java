@@ -21,7 +21,12 @@ public class GameView extends WithGameView {
         this.playerView.interact();
     }
 
-    public boolean resume(){
-        return true;
+    public boolean isNewGame(){
+        Message.NEW_GAME.writeln();
+        if(Console.getInstance().readInt() == 0) {
+            this.game.reset();
+            return true;
+        }
+        return false;
     }
 }

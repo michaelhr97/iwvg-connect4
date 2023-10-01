@@ -3,32 +3,31 @@ package src.java.connect4.types;
 import java.util.ArrayList;
 
 public class Line {
-    private ArrayList<Coordenate> coordenates;
+    private ArrayList<Coordinate> coordinates;
 
     public Line() {
 
-        coordenates = new ArrayList<>();
+        coordinates = new ArrayList<>();
     }
 
-    public void createLine(Coordenate coordenate, Direction direction){
-        coordenates.clear();
-        coordenates.add(coordenate);
-        for(int i= 1; i < 4 ; i++){
-            Coordenate lineCoordenate =
-                    new Coordenate(coordenate.getRow(), coordenate.getColumn());
-            lineCoordenate.moveCoordinateXTimes(direction.getDirectionCoordinate(),i);
-            coordenates.add(lineCoordenate);
+    public void createLine(Coordinate coordinate, Direction direction){
+        coordinates.clear();
+        for(int i= 0; i < 4 ; i++){
+            Coordinate lineCoordinate =
+                    new Coordinate(coordinate.getRow(), coordinate.getColumn());
+            lineCoordinate.moveCoordinateXTimes(direction.getDirectionCoordinate(),i);
+            coordinates.add(lineCoordinate);
         }
     }
 
     public void moveLine(Direction direction){
-        for (Coordenate coordenate : this.coordenates) {
-            coordenate.moveCoordinate(direction.getInverseDirectionCoordinate());
+        for (Coordinate coordinate : this.coordinates) {
+            coordinate.moveCoordinate(direction.getInverseDirectionCoordinate());
         }
     }
 
-    public ArrayList<Coordenate> getCoordinates(){
+    public ArrayList<Coordinate> getCoordinates(){
 
-        return this.coordenates;
+        return this.coordinates;
     }
 }

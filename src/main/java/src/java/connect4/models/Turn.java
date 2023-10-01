@@ -1,6 +1,7 @@
 package src.java.connect4.models;
 
 import src.java.connect4.types.Color;
+import src.java.connect4.views.Message;
 
 class Turn {
     private Board board;
@@ -23,9 +24,17 @@ class Turn {
 
     void play(){
         this.players[this.activePlayer].play();
-        if (!this.board.isGame(this.getActiveColor(), this.players[this.activePlayer].getLastTokenCoordinate())){
-            this.activePlayer = (this.activePlayer+1) % Turn.NUMBER_PLAYERS;
-        }
+    }
+
+    boolean isGame(){
+        boolean game = this.board.isGame(this.getActiveColor(), this.players[this.activePlayer].getLastTokenCoordinate());
+        if(game) Message.PLAYER_WIN.writeln(this.getActiveColor().name());
+        else this.switchPlayer();
+        return game;
+    }
+
+    void switchPlayer(){
+        this.activePlayer = (this.activePlayer+1) % Turn.NUMBER_PLAYERS;
     }
 
     Color getActiveColor(){

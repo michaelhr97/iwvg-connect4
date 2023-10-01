@@ -20,7 +20,8 @@ public class Console {
         try {
             input = this.bufferedReader.readLine();
         } catch (Exception e) {
-            Error.WRONG_COORDINATES.writeln();
+            //esta mal va en otro lado
+            //Error.WRONG_COORDINATES.writeln();
         }
         return input;
     }

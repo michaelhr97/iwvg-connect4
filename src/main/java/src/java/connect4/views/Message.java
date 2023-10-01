@@ -9,7 +9,8 @@ public enum Message {
     PLAYER_WIN("The player :player wins!!"),
     PLAYER_TURN("Player :player Turn:"),
     ENTER_COORDINATE_TO_PUT("Enter a coordinate to put a token:"),
-    COLUMN("Column: ");
+    COLUMN("Column: "),
+    NEW_GAME("Do you want to play again? 0: Yes | 1: No");
 
     private final String message;
 

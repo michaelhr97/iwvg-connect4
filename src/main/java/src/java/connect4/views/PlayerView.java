@@ -12,8 +12,7 @@ class PlayerView extends WithGameView {
             Message.PLAYER_TURN.writeln(this.game.getActiveColor().name());
             this.game.next();
             new BoardView().write(this.game);
-        } while (!this.game.isGame(this.game.getActiveColor()));
-        Message.PLAYER_WIN.writeln(this.game.getActiveColor().name());
+        } while (!this.game.isGame());
     }
 
 

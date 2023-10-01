@@ -7,29 +7,29 @@ public enum Direction {
     DIAGONAL,
     REVERSEDIAGONAL;
 
-    public Coordenate getDirectionCoordinate(){
+    public Coordinate getDirectionCoordinate(){
         switch (this){
             case VERTICAL:
-                return new Coordenate(1,0);
+                return new Coordinate(1,0);
             case HORIZONTAL:
-                return new Coordenate(0,1);
+                return new Coordinate(0,1);
             case DIAGONAL:
-                return new Coordenate(1,1);
+                return new Coordinate(1,1);
             default:
-                return new Coordenate(1,-1);
+                return new Coordinate(1,-1);
         }
     }
 
-    public Coordenate getInverseDirectionCoordinate(){
+    public Coordinate getInverseDirectionCoordinate(){
         switch (this){
             case VERTICAL:
-                return new Coordenate(-1,0);
+                return new Coordinate(-1,0);
             case HORIZONTAL:
-                return new Coordenate(0,-1);
+                return new Coordinate(0,-1);
             case DIAGONAL:
-                return new Coordenate(-1,-1);
+                return new Coordinate(-1,-1);
             default:
-                return new Coordenate(-1,1);
+                return new Coordinate(-1,1);
         }
     }
 }
