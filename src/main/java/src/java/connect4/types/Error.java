@@ -4,8 +4,6 @@ import src.java.connect4.views.ErrorView;
 
 public enum Error {
     NOT_EMPTY,
-    NOT_OWNER,
-    SAME_COORDINATES,
     WRONG_COORDINATES,
     NULL;
 

@@ -18,8 +18,7 @@ public class Console {
         try {
             input = this.bufferedReader.readLine();
         } catch (Exception e) {
-            //esta mal va en otro lado
-            //Error.WRONG_COORDINATES.writeln();
+            this.writeError("integer");
         }
         return input;
     }
